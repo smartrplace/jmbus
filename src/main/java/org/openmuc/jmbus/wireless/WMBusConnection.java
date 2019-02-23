@@ -12,13 +12,12 @@ import org.openmuc.jmbus.SecondaryAddress;
 import org.openmuc.jmbus.transportlayer.SerialBuilder;
 import org.openmuc.jmbus.transportlayer.TcpBuilder;
 import org.openmuc.jmbus.transportlayer.TransportLayer;
-import org.openmuc.jrxtx.DataBits;
-import org.openmuc.jrxtx.Parity;
-import org.openmuc.jrxtx.StopBits;
+
+import gnu.io.SerialPort;
 
 /**
  * A Wireless Mbus Connection.
- * 
+ *
  * @see #addKey(SecondaryAddress, byte[])
  */
 public interface WMBusConnection extends AutoCloseable {
@@ -32,22 +31,22 @@ public interface WMBusConnection extends AutoCloseable {
     /**
      * Stores a pair of secondary address and cryptographic key. The stored keys are automatically used to decrypt
      * messages when a wireless M-Bus message is been decoded.
-     * 
+     *
      * @param address
      *            the secondary address.
      * @param key
      *            the cryptographic key.
-     * 
+     *
      * @see #removeKey(SecondaryAddress)
      */
     void addKey(SecondaryAddress address, byte[] key);
 
     /**
      * Removes the stored key for the given secondary address.
-     * 
+     *
      * @param address
      *            the secondary address for which to remove the stored key.
-     * 
+     *
      * @see #addKey(SecondaryAddress, byte[])
      */
     void removeKey(SecondaryAddress address);
@@ -74,7 +73,7 @@ public interface WMBusConnection extends AutoCloseable {
                 // should not occur
                 throw new RuntimeException(MessageFormat.format("Error unknown manufacturer {0}.", wmBusManufacturer));
             }
-            setStopBits(StopBits.STOPBITS_1).setParity(Parity.NONE).setDataBits(DataBits.DATABITS_8);
+            setStopBits(SerialPort.STOPBITS_1).setParity(SerialPort.PARITY_NONE).setDataBits(SerialPort.DATABITS_8);
         }
 
         public WMBusSerialBuilder setMode(WMBusMode mode) {

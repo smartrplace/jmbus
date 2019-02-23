@@ -42,9 +42,9 @@
 
     <dependencies>
 	<dependency>
-	    <groupId>org.openmuc</groupId>
-	    <artifactId>jrxtx</artifactId>
-	    <version>1.0.1</version>
+	    <groupId>org.rxtx</groupId>
+	    <artifactId>rxtx</artifactId>
+	    <version>2.1.7</version>
 	</dependency>
 	<dependency>
 		<groupId>junit</groupId>
